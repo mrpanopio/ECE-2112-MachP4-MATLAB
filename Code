@@ -1,0 +1,35 @@
+
+disp('This program shows the ideal and non-ideal trajectory of motion ');
+disp('Enter the corresponding values: ');
+
+disp('Initial height of the projectile above the ground in meters: ');
+hi=input('hi= ');
+
+disp('Magnitude of velocity in meter per second-square: ');
+vi=input('vi= ');
+
+disp('The angle in degrees with respect to the +x-axis at which the projectile is fired: ');
+thet=input('thet= ');
+
+disp('x-component of acceleration in meter per second-square: ');
+xi=input('xi= ');
+
+disp('y-component of acceleration in meter per second-square: ');
+yi=input('yi= ');
+
+if yi>=0
+    error('Invalid input!')
+end 
+
+vix=vi*cosd(thet); viy=vi*sind(thet);
+t=(sqrt(((viy)^2)-2*yi*hi)-viy)/yi;
+
+
+t=t+1;
+x=((vix).*(t))+((1./2).*(xi).*(t.^2));
+y=x+((viy).*(t))+((1./2).*(yi).*(t.^2));
+
+plot(x,y)
+xlabel("Distance in meters"); ylabel("Height in meters");
+title('Projectile Trajectory')
+grid()
